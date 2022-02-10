@@ -549,3 +549,4 @@ FodyWeavers.xsd
 ##cypress examples default test for help with
 cypress/integration/1-getting-started
 cypress/integration/2-advanced-examples
+cypress/integration/algebranation.login.spec.js
