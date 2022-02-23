@@ -17,10 +17,9 @@
     "url": "https://github.com/ArestrepoBlankfactor/cypress-mocha/issues"
   },
   "homepage": "https://github.com/ArestrepoBlankfactor/cypress-mocha#readme",
-  "dependencies": {
-    "cypress": "^9.4.1"
-  },
   "devDependencies": {
-    "cypress-xpath": "^1.6.2"
+    "cypress": "^9.5.0",
+    "cypress-xpath": "^1.6.2",
+    "faker": "^5.5.3"
   }
 }
