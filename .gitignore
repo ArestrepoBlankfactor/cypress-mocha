@@ -550,6 +550,8 @@ FodyWeavers.xsd
 cypress/integration/1-getting-started
 cypress/integration/2-advanced-examples
 cypress/integration/algebranation.login.spec.js
+cypress/fixtures/profile.json
+cypress/fixtures/users.json
 
 #reports
 videos/
