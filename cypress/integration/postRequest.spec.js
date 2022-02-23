@@ -30,7 +30,7 @@ describe("POST request", function () {
     });
   });
 
-  it.only("validate email of lastest user created", function () {
+  it.skip("validate email of lastest user created", function () {
     cy.request({
       method: "GET",
       url: "https://gorest.co.in/public/v2/users/",
