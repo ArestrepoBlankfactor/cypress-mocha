@@ -1,32 +1,21 @@
-import ProductViewPage from "../pages/ProductViewPage";
+const faker = require("faker");
 
-const productViewPage = new ProductViewPage();
+const filename = "cypress/fixtures/goRestNewUser.json";
 
-Cypress.Commands.add("gotoTheShoppingPage", () => {
-  cy.log("visit shopping automation page");
-  cy.visit(Cypress.env("URL"));
-  cy.get("#header_logo").should("be.visible");
+/**
+ * overwrite the fixture in order to genereta a random email in each test execution 
+ */
+Cypress.Commands.add("generateUserFixture", () => {
+  cy.readFile(filename).then((obj) => {
+    obj.email = faker.internet.exampleEmail();
+    cy.writeFile(filename, obj);
+  });
 });
 
-Cypress.Commands.add("searchProduct", (productName) => {
-  cy.log("search a product to buy");
-  cy.get("#search_query_top")
-    .should("have.attr", "placeholder", "Search")
-    .type(productName)
-    .type("{enter}");
-});
-
-Cypress.Commands.add("switchToIframeProductView", () => {
-  cy.log("change to the Iframe context");
-  cy.waitLoader();
-  return cy
-    .get(productViewPage.elements.iframeViewProduct())
-    .its("0.contentDocument.body")
-    .should("be.visible")
-    .then(cy.wrap);
-});
-
-Cypress.Commands.add("waitLoader", () => {
-  cy.log('waiting the loader disappear')
-  cy.get("#fancybox-loading > div", { timeout: 30000 }).should("not.exist");
+/**
+ * @response {json} response body
+ * @keys {array of strings} list of properties that should include the @response
+ */
+Cypress.Commands.add("validateResponseBodyKeys", (response, ...keys) => {
+  expect(response).to.have.all.keys(keys);
 });
